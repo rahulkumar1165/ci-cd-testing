@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A to Z Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>A to Z Learning</h1>
+
+    <div class="grid">
+        <div class="card">A - Apple</div>
+        <div class="card">B - Ball</div>
+        <div class="card">C - Cat</div>
+        <div class="card">D - Dog</div>
+        <div class="card">E - Elephant</div>
+        <div class="card">F - Fish</div>
+        <div class="card">G - Goat</div>
+        <div class="card">H - Hat</div>
+        <div class="card">I - Ice Cream</div>
+        <div class="card">J - Jug</div>
+        <div class="card">K - Kite</div>
+        <div class="card">L - Lion</div>
+        <div class="card">M - Monkey</div>
+        <div class="card">N - Nest</div>
+        <div class="card">O - Orange</div>
+        <div class="card">P - Parrot</div>
+        <div class="card">Q - Queen</div>
+        <div class="card">R - Rabbit</div>
+        <div class="card">S - Sun</div>
+        <div class="card">T - Tiger</div>
+        <div class="card">U - Umbrella</div>
+        <div class="card">V - Van</div>
+        <div class="card">W - Watch</div>
+        <div class="card">X - Xylophone</div>
+        <div class="card">Y - Yak</div>
+        <div class="card">Z - Zebra</div>
+    </div>
+
+</body>
+</html>
