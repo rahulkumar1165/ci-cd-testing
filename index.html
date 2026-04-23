@@ -5,74 +5,323 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rahul Kumar | Product Designer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+        // Open BLDX Case Study
+        function openBLDX() {
+            const section = document.getElementById('bldx');
+            section.classList.remove('hidden');
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+    </script>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .carousel img {
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .hero-name {
+            background: linear-gradient(90deg, #ffffff, #a5b4fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            will-change: transform;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
 
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-black text-gray-100 font-sans">
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Rahul Kumar</h1>
-        <p class="text-lg md:text-xl text-gray-600 max-w-2xl">
-            UI/UX Designer with 3+ years of experience building 0→1 products across SaaS, B2B, and B2C domains including
-            Construction, Logistics, Insurance, and E-commerce.
+    <!-- 3D Background -->
+    <canvas id="bg"></canvas>
+    <script>
+        const canvas = document.getElementById('bg');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let dots = [];
+        for (let i = 0; i < 80; i++) {
+            dots.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 2 + 1,
+                dx: (Math.random() - 0.5) * 0.5,
+                dy: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            dots.forEach(d => {
+                d.x += d.dx;
+                d.y += d.dy;
+                if (d.x < 0 || d.x > canvas.width) d.dx *= -1;
+                if (d.y < 0 || d.y > canvas.height) d.dy *= -1;
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+                ctx.fillStyle = '#444';
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full flex justify-between items-center px-8 py-4 text-white glass z-50">
+        <h1 class="font-semibold text-lg">Rahul</h1>
+        <nav class="space-x-6 text-sm">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#bldx">BLDX</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 text-white fade-in">
+        <h1 id="heroName" class="hero-name text-[14vw] md:text-[8rem] leading-none font-extrabold tracking-tight mb-4">
+            Rahul Kumar</h1>
+        <p class="text-xl max-w-2xl">
+            I design complex B2B systems from 0→1, turning messy workflows into structured digital products.
         </p>
     </section>
 
-    <!-- Experience Section -->
-    <section class="py-16 px-6 bg-white">
+    <!-- About -->
+    <section id="about" class="py-20 px-6 glass fade-in">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-semibold mb-6">Experience</h2>
+            <h2 class="text-3xl font-bold mb-6">About Me</h2>
+            <p class="text-gray-300 leading-relaxed">
+                UI/UX Designer with 3+ years across SaaS, Construction, Logistics, and Insurance. I focus on solving
+                real-world operational problems and building scalable product systems.
+            </p>
+        </div>
+    </section>
 
-            <div class="space-y-4 text-gray-700">
-                <p>• Designed end-to-end products from scratch (0→1) including user research, workflows, and UI systems.
-                </p>
-                <p>• Worked closely with founders and product teams to define product direction.</p>
-                <p>• Built scalable design systems for web and mobile platforms.</p>
-                <p>• Experience across SaaS, Construction Tech, Logistics, Insurance, and E-commerce.</p>
+    <!-- Experience -->
+    <section id="experience" class="py-20 px-6 fade-in">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">Experience</h2>
+            <div class="space-y-4 text-gray-300">
+                <p>• Designed 0→1 products from idea to execution</p>
+                <p>• Worked directly with founders</p>
+                <p>• Built scalable UX systems</p>
+                <p>• Experience across B2B, B2C, SaaS</p>
             </div>
         </div>
     </section>
 
-    <!-- Project Section -->
-    <section class="py-16 px-6">
+    <!-- PROJECT CARD -->
+    <section class="py-20 px-6 fade-in">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-semibold mb-6">BLDX Project</h2>
+            <div onclick="openBLDX()" class="glass rounded-2xl p-6 cursor-pointer hover:scale-[1.02] transition">
+                <img src="https://via.placeholder.com/1000x500" class="rounded-xl mb-6" />
+                <h2 class="text-3xl font-bold mb-2">BLDX — Construction SaaS</h2>
+                <p class="text-gray-400 mb-4">0→1 product solving real-world construction execution problems</p>
+                <div class="flex gap-3 flex-wrap text-sm">
+                    <span class="px-3 py-1 glass rounded-full">SaaS</span>
+                    <span class="px-3 py-1 glass rounded-full">B2B</span>
+                    <span class="px-3 py-1 glass rounded-full">0→1</span>
+                    <span class="px-3 py-1 glass rounded-full">Construction</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <p class="text-gray-600 mb-10 max-w-3xl">
-                Worked as a Business Analyst & Product Designer at BLDX, a SaaS platform for the construction industry.
-                Collaborated directly with the founder to shape the product from scratch.
-            </p>
+    <!-- BLDX Sticky Section (Hidden by default) -->
+    <section id="bldx" class="py-20 px-6 glass hidden">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-6">BLDX — Case Study</h2>
 
-            <!-- Mockup Grid -->
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 1</div>
-                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 2</div>
-                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 3</div>
-                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 4</div>
-                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 5</div>
-                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 6</div>
+            <!-- CONTEXT + IMPACT -->
+            <div class="mb-16 fade-in">
+                <p class="text-gray-300 mb-4">
+                    BLDX is a construction SaaS platform built from 0→1 to solve real-world execution problems on site.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="p-6 glass rounded-xl">
+                        <p class="text-2xl font-bold">↓ 30%</p>
+                        <p class="text-sm text-gray-400">Planning delays</p>
+                    </div>
+                    <div class="p-6 glass rounded-xl">
+                        <p class="text-2xl font-bold">↑ 40%</p>
+                        <p class="text-sm text-gray-400">Reporting speed</p>
+                    </div>
+                    <div class="p-6 glass rounded-xl">
+                        <p class="text-2xl font-bold">↑ Visibility</p>
+                        <p class="text-sm text-gray-400">Across teams</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Work Done -->
-            <div class="mt-10">
-                <h3 class="text-xl font-semibold mb-4">What I Did</h3>
-                <ul class="list-disc pl-6 text-gray-700 space-y-2">
-                    <li>Defined product features like Schedule Optimizer, Resource Management, and Daily Reporting</li>
-                    <li>Created user flows and structured workflows</li>
-                    <li>Designed UI for web and mobile platforms</li>
-                    <li>Collaborated with engineering for implementation</li>
-                </ul>
+            <!-- DESIGN THINKING -->
+            <div class="mb-20 fade-in">
+                <h3 class="text-2xl font-bold mb-6">My Thinking Process</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+
+                    <div class="p-6 glass rounded-xl">
+                        <h4 class="font-semibold mb-2">1. Identify Root Problems</h4>
+                        <p class="text-sm text-gray-400">Focused on actual on-site issues like delays, lack of
+                            visibility, and manual workflows instead of surface-level UI problems.</p>
+                    </div>
+
+                    <div class="p-6 glass rounded-xl">
+                        <h4 class="font-semibold mb-2">2. Structure Chaos</h4>
+                        <p class="text-sm text-gray-400">Converted messy real-world workflows into structured systems
+                            with clear relationships (tasks, resources, dependencies).</p>
+                    </div>
+
+                    <div class="p-6 glass rounded-xl">
+                        <h4 class="font-semibold mb-2">3. Design for Scale</h4>
+                        <p class="text-sm text-gray-400">Ensured every feature works across projects, teams, and future
+                            use cases by building reusable patterns.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+
+                <!-- LEFT STICKY CAROUSEL -->
+                <div class="sticky top-24 h-[400px] carousel">
+                    <img src="https://via.placeholder.com/500" class="active rounded-xl" />
+                    <img src="https://via.placeholder.com/500" class="rounded-xl" />
+                    <img src="https://via.placeholder.com/500" class="rounded-xl" />
+                    <img src="https://via.placeholder.com/500" class="rounded-xl" />
+                    <img src="https://via.placeholder.com/500" class="rounded-xl" />
+                </div>
+
+                <!-- RIGHT CONTENT -->
+                <div class="space-y-32">
+
+                    <div class="fade-in feature" data-index="0">
+                        <h3 class="text-2xl font-semibold">Schedule Optimizer</h3>
+                        <p class="text-gray-400"><b>Problem:</b> Project timelines were unreliable due to disconnected
+                            planning across teams.</p>
+                        <p><b>Solution:</b> Introduced dependency-based scheduling with clear task relationships.</p>
+                        <p class="text-green-600 mt-2"><b>Impact:</b> Reduced planning delays by ~30%.</p>
+                    </div>
+
+                    <div class="fade-in feature" data-index="1">
+                        <h3 class="text-2xl font-semibold">Resource Management</h3>
+                        <p class="text-gray-400"><b>Problem:</b> Site managers lacked visibility into labor and material
+                            allocation.</p>
+                        <p><b>Solution:</b> Designed real-time dashboards for tracking and allocation.</p>
+                        <p class="text-green-600 mt-2"><b>Impact:</b> Improved utilization and reduced idle resources.
+                        </p>
+                    </div>
+
+                    <div class="fade-in feature" data-index="2">
+                        <h3 class="text-2xl font-semibold">Daily Reporting</h3>
+                        <p class="text-gray-400"><b>Problem:</b> Manual reporting slowed down decision-making.</p>
+                        <p><b>Solution:</b> Simplified UX for quick, structured daily updates.</p>
+                        <p class="text-green-600 mt-2"><b>Impact:</b> Increased reporting speed by ~40%.</p>
+                    </div>
+
+                    <div class="fade-in feature" data-index="3">
+                        <h3 class="text-2xl font-semibold">Document Management</h3>
+                        <p class="text-gray-400"><b>Problem:</b> Documents were scattered across tools and teams.</p>
+                        <p><b>Solution:</b> Built centralized system with tagging and collaboration.</p>
+                        <p class="text-green-600 mt-2"><b>Impact:</b> Faster document retrieval and better
+                            collaboration.</p>
+                    </div>
+
+                    <div class="fade-in feature" data-index="4">
+                        <h3 class="text-2xl font-semibold">Quality & Snags</h3>
+                        <p class="text-gray-400"><b>Problem:</b> Issues were not tracked systematically.</p>
+                        <p><b>Solution:</b> Created structured checklist and snag tracking workflows.</p>
+                        <p class="text-green-600 mt-2"><b>Impact:</b> Improved issue resolution speed and
+                            accountability.</p>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-8 text-center">
+    <footer class="glass text-gray-300 py-10 text-center">
         <p class="text-lg">Rahul Kumar</p>
         <p class="text-sm">📞 Your Mobile Number</p>
         <p class="text-sm">📧 your.email@example.com</p>
     </footer>
+
+    <script>
+
+        // Scroll animation
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.2 };
+
+        const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // Parallax effect on hero name
+        const heroName = document.getElementById('heroName');
+        window.addEventListener('scroll', () => {
+            const offset = window.scrollY * 0.3;
+            heroName.style.transform = `translateY(${offset}px)`;
+        });
+
+        // Carousel sync
+        const features = document.querySelectorAll('.feature');
+        const images = document.querySelectorAll('.carousel img');
+
+        window.addEventListener('scroll', () => {
+            let index = 0;
+            features.forEach((f, i) => {
+                const rect = f.getBoundingClientRect();
+                if (rect.top < window.innerHeight / 2) index = i;
+            });
+
+            images.forEach(img => img.classList.remove('active'));
+            if (images[index]) images[index].classList.add('active');
+        });
+
+    </script>
 
 </body>
 
