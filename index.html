@@ -2,72 +2,77 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>A to Z Learning</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #fff9f9;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            margin-bottom: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .card {
-            background: rgb(0, 255, 81);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 18px;
-            font-weight: bold;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahul Kumar | Product Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-50 text-gray-900 font-sans">
 
-    <h1>A to Z Learning</h1>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Rahul Kumar</h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl">
+            UI/UX Designer with 3+ years of experience building 0→1 products across SaaS, B2B, and B2C domains including
+            Construction, Logistics, Insurance, and E-commerce.
+        </p>
+    </section>
 
-    <div class="grid">
-        <div class="card">A - Apple</div>
-        <div class="card">B - Ball</div>
-        <div class="card">C - Cat</div>
-        <div class="card">D - Dog</div>
-        <div class="card">E - Elephant</div>
-        <div class="card">F - Fish</div>
-        <div class="card">G - Goat</div>
-        <div class="card">H - Hat</div>
-        <div class="card">I - Ice Cream</div>
-        <div class="card">J - Jug</div>
-        <div class="card">K - Kite</div>
-        <div class="card">L - Lion</div>
-        <div class="card">M - Monkey</div>
-        <div class="card">N - Nest</div>
-        <div class="card">O - Orange</div>
-        <div class="card">P - Parrot</div>
-        <div class="card">Q - Queen</div>
-        <div class="card">R - Rabbit</div>
-        <div class="card">S - Sun</div>
-        <div class="card">T - Tiger</div>
-        <div class="card">U - Umbrella</div>
-        <div class="card">V - Van</div>
-        <div class="card">W - Watch</div>
-        <div class="card">X - Xylophone</div>
-        <div class="card">Y - Yak</div>
-        <div class="card">Z - Zebra</div>
-    </div>
+    <!-- Experience Section -->
+    <section class="py-16 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-semibold mb-6">Experience</h2>
+
+            <div class="space-y-4 text-gray-700">
+                <p>• Designed end-to-end products from scratch (0→1) including user research, workflows, and UI systems.
+                </p>
+                <p>• Worked closely with founders and product teams to define product direction.</p>
+                <p>• Built scalable design systems for web and mobile platforms.</p>
+                <p>• Experience across SaaS, Construction Tech, Logistics, Insurance, and E-commerce.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section class="py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-semibold mb-6">BLDX Project</h2>
+
+            <p class="text-gray-600 mb-10 max-w-3xl">
+                Worked as a Business Analyst & Product Designer at BLDX, a SaaS platform for the construction industry.
+                Collaborated directly with the founder to shape the product from scratch.
+            </p>
+
+            <!-- Mockup Grid -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 1</div>
+                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 2</div>
+                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 3</div>
+                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 4</div>
+                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 5</div>
+                <div class="bg-gray-200 h-48 rounded-2xl flex items-center justify-center">Mockup 6</div>
+            </div>
+
+            <!-- Work Done -->
+            <div class="mt-10">
+                <h3 class="text-xl font-semibold mb-4">What I Did</h3>
+                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                    <li>Defined product features like Schedule Optimizer, Resource Management, and Daily Reporting</li>
+                    <li>Created user flows and structured workflows</li>
+                    <li>Designed UI for web and mobile platforms</li>
+                    <li>Collaborated with engineering for implementation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 text-center">
+        <p class="text-lg">Rahul Kumar</p>
+        <p class="text-sm">📞 Your Mobile Number</p>
+        <p class="text-sm">📧 your.email@example.com</p>
+    </footer>
 
 </body>
 
