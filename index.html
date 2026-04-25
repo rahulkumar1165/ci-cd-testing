@@ -3,76 +3,68 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Advanced Calculator</title>
+    <title>Premium Calculator</title>
 
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #222;
-            --btn: #f0f0f0;
-            --accent: #007bff;
-        }
-
-        body.dark {
-            --bg: #1e1e1e;
+            --bg: linear-gradient(135deg, #667eea, #764ba2);
+            --card: rgba(255, 255, 255, 0.15);
             --text: #fff;
-            --btn: #333;
-            --accent: #4dabf7;
         }
 
-        body.kid {
-            --bg: #fff5f5;
-            --btn: #ffd6d6;
-            --accent: #ff6b6b;
-        }
-
-        body.friendly {
-            --bg: #f0fff4;
-            --btn: #d3f9d8;
-            --accent: #38d9a9;
+        body.light {
+            --bg: #f5f5f5;
+            --card: #ffffff;
+            --text: #222;
         }
 
         body {
             margin: 0;
-            font-family: Arial;
+            font-family: 'Segoe UI', sans-serif;
             background: var(--bg);
-            color: var(--text);
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            color: var(--text);
+            transition: 0.3s;
         }
 
-        h1 {
-            margin: 20px;
+        .container {
+            text-align: center;
         }
 
-        .controls {
+        .toggle {
             margin-bottom: 15px;
         }
 
-        select,
-        button {
-            padding: 8px;
-            margin: 5px;
-            border-radius: 5px;
+        .toggle button {
+            padding: 8px 15px;
             border: none;
+            border-radius: 20px;
             cursor: pointer;
+            background: white;
         }
 
         .calculator {
-            width: 260px;
-            background: var(--btn);
-            padding: 15px;
-            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            background: var(--card);
+            padding: 20px;
+            border-radius: 20px;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .display {
             width: 100%;
-            height: 50px;
-            font-size: 20px;
-            margin-bottom: 10px;
-            padding: 5px;
+            height: 60px;
+            font-size: 24px;
+            border: none;
+            outline: none;
             text-align: right;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
         }
 
         .grid {
@@ -81,17 +73,31 @@
             gap: 10px;
         }
 
-        .btn {
+        button {
             padding: 15px;
             font-size: 18px;
-            background: var(--bg);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
+            transition: 0.2s;
         }
 
-        .btn:hover {
-            background: var(--accent);
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .operator {
+            background: #ff9f43;
+            color: white;
+        }
+
+        .equal {
+            background: #10ac84;
+            color: white;
+        }
+
+        .clear {
+            background: #ee5253;
             color: white;
         }
     </style>
@@ -99,47 +105,46 @@
 
 <body>
 
-    <h1>Calculator</h1>
+    <div class="container">
 
-    <div class="controls">
-        <button onclick="toggleTheme()">🌙 Toggle Theme</button>
-
-        <select onchange="changeStyle(this.value)">
-            <option value="">Minimal</option>
-            <option value="kid">Kid Style</option>
-            <option value="friendly">Friendly</option>
-        </select>
-    </div>
-
-    <div class="calculator">
-        <input type="text" id="display" class="display" disabled>
-
-        <div class="grid">
-            <button class="btn" onclick="append('7')">7</button>
-            <button class="btn" onclick="append('8')">8</button>
-            <button class="btn" onclick="append('9')">9</button>
-            <button class="btn" onclick="append('/')">÷</button>
-
-            <button class="btn" onclick="append('4')">4</button>
-            <button class="btn" onclick="append('5')">5</button>
-            <button class="btn" onclick="append('6')">6</button>
-            <button class="btn" onclick="append('*')">×</button>
-
-            <button class="btn" onclick="append('1')">1</button>
-            <button class="btn" onclick="append('2')">2</button>
-            <button class="btn" onclick="append('3')">3</button>
-            <button class="btn" onclick="append('-')">−</button>
-
-            <button class="btn" onclick="append('0')">0</button>
-            <button class="btn" onclick="clearDisplay()">C</button>
-            <button class="btn" onclick="calculate()">=</button>
-            <button class="btn" onclick="append('+')">+</button>
+        <div class="toggle">
+            <button onclick="toggleTheme()">🌙 Toggle Theme</button>
         </div>
+
+        <div class="calculator">
+            <input type="text" id="display" class="display" disabled>
+
+            <div class="grid">
+                <button onclick="clearDisplay()" class="clear">C</button>
+                <button onclick="append('%')" class="operator">%</button>
+                <button onclick="append('/')" class="operator">÷</button>
+                <button onclick="append('*')" class="operator">×</button>
+
+                <button onclick="append('7')">7</button>
+                <button onclick="append('8')">8</button>
+                <button onclick="append('9')">9</button>
+                <button onclick="append('-')" class="operator">−</button>
+
+                <button onclick="append('4')">4</button>
+                <button onclick="append('5')">5</button>
+                <button onclick="append('6')">6</button>
+                <button onclick="append('+')" class="operator">+</button>
+
+                <button onclick="append('1')">1</button>
+                <button onclick="append('2')">2</button>
+                <button onclick="append('3')">3</button>
+                <button onclick="calculate()" class="equal">=</button>
+
+                <button onclick="append('0')" style="grid-column: span 2;">0</button>
+                <button onclick="append('.')">.</button>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        function append(value) {
-            document.getElementById("display").value += value;
+        function append(val) {
+            document.getElementById("display").value += val;
         }
 
         function clearDisplay() {
@@ -151,19 +156,12 @@
                 document.getElementById("display").value =
                     eval(document.getElementById("display").value);
             } catch {
-                alert("Invalid calculation");
+                alert("Invalid input");
             }
         }
 
         function toggleTheme() {
-            document.body.classList.toggle("dark");
-        }
-
-        function changeStyle(style) {
-            document.body.classList.remove("kid", "friendly");
-            if (style) {
-                document.body.classList.add(style);
-            }
+            document.body.classList.toggle("light");
         }
     </script>
 
